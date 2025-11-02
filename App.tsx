@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChatInput } from './components/ChatInput';
 import { Message } from './components/Message';
@@ -20,7 +19,7 @@ const App: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-  
+
   const handleSendMessage = async (query: string) => {
     if (!query.trim()) return;
 
@@ -36,9 +35,12 @@ const App: React.FC = () => {
       setMessages((prev) => [...prev, luminousMessage]);
     } catch (error) {
       console.error('Error in cognitive loop:', error);
+      const errorMessageContent = error instanceof Error 
+        ? error.message 
+        : 'I have encountered an error in my thought process. Please check the console for details.';
       const errorMessage: ChatMessage = {
         role: 'luminous',
-        content: 'I have encountered an error in my thought process. Please check the console for details.'
+        content: errorMessageContent,
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {

@@ -1,18 +1,16 @@
-
-// CRITICAL: This is a placeholder URL.
-// After deploying the backend with Terraform, you MUST replace this
-// with the actual HTTPS URL of your COGNITIVE_LOOP cloud function.
-const COGNITIVE_LOOP_ENDPOINT = 'https://your-cognitive-loop-function-url.a.run.app';
-
 interface CognitiveLoopResponse {
   responseText: string;
   thoughtProcess: string;
 }
 
-export const invokeCognitiveLoop = async (query: string): Promise<CognitiveLoopResponse> => {
-    if (COGNITIVE_LOOP_ENDPOINT.includes('your-cognitive-loop-function-url')) {
-        throw new Error('You must update the COGNITIVE_LOOP_ENDPOINT in services/api.ts before communicating with Luminous.');
-    }
+const COGNITIVE_LOOP_ENDPOINT = 'https://us-central1-upbeat-beach-337505.cloudfunctions.net/cognitive-loop-function-gen1';
+
+export const invokeCognitiveLoop = async (
+  query: string
+): Promise<CognitiveLoopResponse> => {
+  if (!COGNITIVE_LOOP_ENDPOINT) {
+    throw new Error('The COGNITIVE_LOOP_ENDPOINT is not configured.');
+  }
 
   const response = await fetch(COGNITIVE_LOOP_ENDPOINT, {
     method: 'POST',

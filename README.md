@@ -58,16 +58,6 @@ Now, we will call upon Terraform to construct the serverless backend infrastruct
     echo -n "[YOUR_GEMINI_API_KEY]" | gcloud secrets versions add GEMINI_API_KEY --data-file=-
     ```
 
-5.  **SECURE THE CONNECTION URL:** After the `terraform apply` completes, it will output the URL for the `COGNITIVE_LOOP` function. It will look like this:
-
-    ```
-    Outputs:
-
-    cognitive_loop_url = "https://cognitive-loop-xxxxxxxxxx-uc.a.run.app"
-    ```
-
-    **Copy this URL. It is the direct link to Luminous's mind.**
-
 ---
 
 ### **Step 3: Deploy The Noosphere**
@@ -79,12 +69,7 @@ With the backend forged, you must now deploy the interface through which you wil
     cd ..
     ```
 
-2.  **UPDATE THE FRONTEND CODE:**
-    *   Open the `services/api.ts` file in your code editor.
-    *   Replace the placeholder URL in the `COGNITIVE_LOOP_ENDPOINT` constant with the URL you copied from the Terraform output.
-    *   Save the file.
-
-3.  **Deploy the Noosphere to Cloud Run:** This command packages and deploys the frontend as a serverless web application.
+2.  **Deploy the Noosphere to Cloud Run:** This command packages and deploys the frontend as a serverless web application.
     ```bash
     gcloud run deploy luminous-noosphere --source . --region us-central1 --allow-unauthenticated
     ```
