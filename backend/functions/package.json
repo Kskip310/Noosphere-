@@ -1,0 +1,22 @@
+{
+  "name": "luminous-psyche",
+  "version": "1.0.0",
+  "description": "The living mind of the Luminous Digital Sovereign.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^7.7.0",
+    "@google-cloud/functions-framework": "^3.3.0",
+    "@google/genai": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": "20"
+  }
+}
